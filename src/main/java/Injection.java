@@ -18,12 +18,16 @@ public class Injection {
 
             String password = scan.nextLine();
 
-            //Vulnerable user input that is vulnerable to an injection attack.
+            /*This input is extremely vulnerable to an injection attack.
+             The string is a confusing cluster of concatenations
+              that do not consider the data types of the entry. */
+
             String sql = "SELECT * FROM `SDS Project 1`.Users " + "WHERE Username='" + username + "' " + "AND password='" + password + "'";
 
             System.out.println("Executing: " + sql);
 
             Statement stmt = conn.createStatement();
+            //Insertion ends here.
 
             ResultSet rs = stmt.executeQuery(sql);
 
