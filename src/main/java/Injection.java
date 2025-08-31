@@ -18,9 +18,10 @@ public class Injection {
 
             String password = scan.nextLine();
 
-            /*This input is extremely vulnerable to an injection attack.
-             The string is a confusing cluster of concatenations
-              that do not consider the data types of the entry. */
+            /*
+             * This input is extremely vulnerable to an injection attack.
+             * The string, "sql", is a confusing cluster of concatenations
+             */
 
             String sql = "SELECT * FROM `SDS Project 1`.Users " + "WHERE Username='" + username + "' " + "AND password='" + password + "'";
 

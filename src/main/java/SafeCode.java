@@ -19,17 +19,22 @@ public class SafeCode {
             String password = scan.nextLine();
 
 
-            //User input is now protected from injections.
+            /*
+             * User input is now protected from injections.
+
+             * The variable "sql" is now one unified string instead of being a concatenated mess.
+             */
             String sql = "SELECT * FROM `SDS Project 1`.Users + WHERE Username=? AND password=?";
 
             System.out.println("Executing: " + sql);
 
+            //The interface "PreparedStatement"
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, username);
             pstmt.setString(2, password);
             //Protection ends here.
 
-            ResultSet rs = pstmt.executeQuery(sql);
+            ResultSet rs = pstmt.executeQuery();
 
             if (rs.next()) {
                 System.out.println("Login successful! Welcome " + rs.getString("username"));
