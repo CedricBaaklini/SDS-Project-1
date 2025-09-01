@@ -1,3 +1,4 @@
+//This class demonstrates a login that is vulnerable to SQL Injections
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -14,8 +15,8 @@ public class Injection {
         try (Connection conn = DriverManager.getConnection(url, dbUser, dbPassword); Scanner scan = new Scanner(System.in)) {
             System.out.println("Enter username: ");
             String username = scan.nextLine();
-            System.out.println("Enter password: ");
 
+            System.out.println("Enter password: ");
             String password = scan.nextLine();
 
             /*
@@ -23,12 +24,11 @@ public class Injection {
              * The string, "sql", is a confusing cluster of concatenations
              */
 
-            String sql = "SELECT * FROM `SDS Project 1`.Users " + "WHERE Username='" + username + "' " + "AND password='" + password + "'";
+            String sql = "SELECT * FROM `SDS Project 1`.Users WHERE Username='" + username + "' AND Password='" + password + "'";
 
             System.out.println("Executing: " + sql);
 
             Statement stmt = conn.createStatement();
-            //Insertion ends here.
 
             ResultSet rs = stmt.executeQuery(sql);
 
