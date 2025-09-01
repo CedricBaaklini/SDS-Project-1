@@ -15,14 +15,14 @@ public class SafeCode {
         try (Connection conn = DriverManager.getConnection(url, dbUser, dbPassword); Scanner scan = new Scanner(System.in)) {
             System.out.println("Enter username: ");
             String username = scan.nextLine();
-            System.out.println("Enter password: ");
 
+            System.out.println("Enter password: ");
             String password = scan.nextLine();
 
 
             /*
              * User input is now protected from injections.
-             * The variable "sql" is now one unified string instead of a concatenated mess.
+             * The variable "sql" is now one organized and unified string instead of a concatenated mess.
              * It even has a placeholder for the data!
              * They are represented by a "?".
              */
@@ -32,11 +32,19 @@ public class SafeCode {
 
             //The interface "PreparedStatement" validates, normalizes, sanitizes, and parse the entry.
             PreparedStatement pstmt = conn.prepareStatement(sql);
+            /*
+             * The inputs are then indexed to parameters via the "setString" method.
+             * This packages the inputs into secure and isolated variables.
+             * Each index corresponds to the order of the "?".
+             * For instance, the first "?" will be represented by the first index.
+             * The second index will be represented by the second "?".
+             * So on and so forth.
+             */
             pstmt.setString(1, username);
             pstmt.setString(2, password);
             //Protection ends here.
 
-            //Parameter is not necessary for the PrepareStatement version of executeQuery().
+            //Parameter is not required for the PrepareStatement version of executeQuery().
             ResultSet rs = pstmt.executeQuery();
 
             if (rs.next()) {

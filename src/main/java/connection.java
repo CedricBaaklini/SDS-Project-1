@@ -6,7 +6,7 @@ public class connection {
     public static void main(String[] args) {
         String url = "jdbc:mysql://localhost:3306/SDS%20Project%201";
         String user = "root";
-        String password = "raqm777!";
+        String password = "opensesame";
 
         try {
             Connection conn = DriverManager.getConnection(url, user, password);

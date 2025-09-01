@@ -1,5 +1,4 @@
 Sample input for SQLi demonstration
 
-Username: charlie_k' OR '1'='1
-
-Password: hocus_pocus
+Place the following in the username input:
+charlie_k' OR '1'='1

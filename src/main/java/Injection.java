@@ -10,7 +10,7 @@ public class Injection {
 
         String url = "jdbc:mysql://localhost:3306/SDS%20Project%201";
         String dbUser = "root";
-        String dbPassword = "raqm777!";
+        String dbPassword = "opensesame";
 
         try (Connection conn = DriverManager.getConnection(url, dbUser, dbPassword); Scanner scan = new Scanner(System.in)) {
             System.out.println("Enter username: ");
