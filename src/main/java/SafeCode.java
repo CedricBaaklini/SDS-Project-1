@@ -1,3 +1,4 @@
+//This class demonstrates a login that has robust protection against injections.
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -21,19 +22,21 @@ public class SafeCode {
 
             /*
              * User input is now protected from injections.
-
-             * The variable "sql" is now one unified string instead of being a concatenated mess.
+             * The variable "sql" is now one unified string instead of a concatenated mess.
+             * It even has a placeholder for the data!
+             * They are represented by a "?".
              */
-            String sql = "SELECT * FROM `SDS Project 1`.Users + WHERE Username=? AND password=?";
+            String sql = "SELECT * FROM `SDS Project 1`.Users WHERE Username=? AND Password=?";
 
             System.out.println("Executing: " + sql);
 
-            //The interface "PreparedStatement"
+            //The interface "PreparedStatement" validates, normalizes, sanitizes, and parse the entry.
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, username);
             pstmt.setString(2, password);
             //Protection ends here.
 
+            //Parameter is not necessary for the PrepareStatement version of executeQuery().
             ResultSet rs = pstmt.executeQuery();
 
             if (rs.next()) {
