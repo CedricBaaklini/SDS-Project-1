@@ -9,7 +9,7 @@ It contains two console-based login flows:
 
 Use this project to learn by doing: see an injection succeed in the vulnerable flow, then see how the secure flow blocks
 the same attack.
-Important: Educational use only. Do not use the vulnerable approach in any real application.
+Important: **Educational use only**. **Do not** use the vulnerable approach in any real application.
 
 ## What you’ll learn
 
@@ -110,11 +110,11 @@ For convenience, the example injection payload is also noted in sample.txt.
 - Access denied/connection issues
     - Verify MySQL is running and accessible on localhost:3306.
     - Confirm username/password and database name in the JDBC URL.
-    - If you renamed the database, update both the JDBC URL and the SQL that references the schema name.
+  - If you have renamed the database, update both the JDBC URL and the SQL that references the schema name.
 
 - Schema name with spaces
     - JDBC URL must URL-encode spaces (e.g., SDS%20Project%201).
-    - SQL identifiers with spaces must be quoted with backticks (e.g., ). `SDS Project 1`
+  - SQL identifiers with spaces must be quoted with backticks (e.g.). `SDS Project 1`
     - Alternatively, avoid spaces: use a schema such as sds_project_1 and update the code/JDBC URL accordingly.
 
 - Driver not found
