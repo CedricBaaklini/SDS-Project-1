@@ -21,15 +21,24 @@ public class Injection {
 
             /*
              * This input is extremely vulnerable to an injection attack.
-             * The string, "sql", is a confusing cluster of concatenations
+             * The string, "sql", is a confusing cluster of concatenations.
+             * This can and will, easily confuse the console.
+             * It cannot tell the difference between a string and a legit SQL statement.
+             * As a consequence, injections are very likely to be done with ease.
              */
 
             String sql = "SELECT * FROM `SDS Project 1`.Users WHERE Username='" + username + "' AND Password='" + password + "'";
 
             System.out.println("Executing: " + sql);
 
+            //The variables are sent directly into the database without any kind of validation or cleanup.
             Statement stmt = conn.createStatement();
 
+            /*
+             * Here, the compiler gives me a warning that the parameter "sql" is unsafe.
+             * A parameter being unsafe means that injections are prone to happen.
+             * Once the query is executed, it will log me in regardless if the password is correct.
+             */
             ResultSet rs = stmt.executeQuery(sql);
 
             if (rs.next()) {
