@@ -21,7 +21,10 @@ public class Injection {
 
             /*
              * This input is extremely vulnerable to an injection attack.
-             * The string, "sql", is a confusing cluster of concatenations
+             * The string, "sql", is a confusing cluster of concatenations.
+             * This can and will, easily confuse the console.
+             * It cannot tell the difference between a string and a legit SQL statement.
+             * As a consequence, injections are very likely to be done with ease.
              */
 
             String sql = "SELECT * FROM `SDS Project 1`.Users WHERE Username='" + username + "' AND Password='" + password + "'";
